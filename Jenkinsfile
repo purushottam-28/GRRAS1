@@ -15,3 +15,4 @@ pipeline {
 				sh 'cp target/GRRAS1.war /home/purushottam/Documents/DevOps/apache-tomcat-9.0.93/webapps'
 				}}
 		}
+	}
