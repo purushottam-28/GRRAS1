@@ -8,7 +8,7 @@ pipeline {
 				}}
 		stage('Build') {
 			steps {
-				sh 'mvn install'
+				sh '/home/purushottam/Documents/DevOps/apache-maven-3.9.8/bin/mvn install'
 				}}
 		stage('Deployment') {
 			steps {
