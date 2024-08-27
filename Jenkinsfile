@@ -1,5 +1,9 @@
 pipeline {
 	agent any
+	parameters {
+  		choice choices: ['DEV', 'QA', 'UAT'], name: 'ENVIRONMENT'
+	}
+
 
 	triggers {
   		pollSCM '* * * * *'
@@ -16,7 +20,17 @@ pipeline {
 				}}
 		stage('Deployment') {
 			steps {
-				sh 'cp target/GRRAS1.war /home/purushottam/Documents/DevOps/apache-tomcat-9.0.93/webapps'
-				}}
+				script {
+				if ( env.ENVIRONMENT = "QA" ){
+					sh 'cp target/GRRAS1.war /home/purushottam/Documents/DevOps/apache-tomcat-9.0.93/webapps'
+					echo "deployment has been done on QA!"
+				}
+				elif  ( env.ENVIRONMENT= "UAT" ){
+         				sh 'cp target/GRRAS1.war /home/purushottam/Documents/DevOps/apache-tomcat-9.0.93/webapps'
+					echo "deployment has been done on UAT!"
+				}
+				echo "deployment has been done!"
+				fi
+				}}}
 		}
 	}
