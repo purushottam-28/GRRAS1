@@ -11,7 +11,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh 'mvn install'
+				sh 'JAVA_HOME=/home/grras/slavedir/jdk-11.0.24 /home/grras/slavedir/apache-maven-3.9.9/bin/mvn install'
 			}
 		}
 		stage('Deployment') {
